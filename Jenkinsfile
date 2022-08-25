@@ -38,7 +38,6 @@ pipeline {
                 sudo systemctl daemon-reload    
                 sudo systemctl restart myApp
 
-                java -jar /home/jenkins/project-wars/project_build_${BUILD_NUMBER}.war
                 '''
             }
         }
