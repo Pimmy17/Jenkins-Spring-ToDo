@@ -3,14 +3,13 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                'echo "Running Test Setup"'
+                echo "Running Test"
                 sh 'mvn clean test'
             }
         }
         stage('Build') {
             steps {
                 sh '''
-                echo "Running Build Setup"
                 mvn clean install
                 mkdir -p /home/jenkins/project-wars
                 mv ./target/*.war /home/jenkins/project-wars/project-${BUILD_NUMBER}.war
@@ -20,7 +19,6 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
-                echo "Running deployment"
                 java -jar /home/jenkins/project-wars/project-${BUILD_NUMBER}.war
                 '''
             }
