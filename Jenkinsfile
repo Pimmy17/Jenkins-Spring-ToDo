@@ -21,6 +21,7 @@ pipeline {
             steps {
                 echo "Running Deployment"
                 sh '''
+                buildNum=${BUILD_NUMBER}
                 echo '[Unit]
 Description=My SpringBoot App
 
@@ -28,7 +29,7 @@ Description=My SpringBoot App
 User=ubuntu
 Type=simple
 
-ExecStart=/usr/bin/java -jar /home/jenkins/project-wars/project_build_${BUILD_NUMBER}.war
+ExecStart=/usr/bin/java -jar /home/jenkins/project-wars/project_build_$buildNum.war
 
 [Install]
 WantedBy=multi-user.target' > /home/jenkins/myApp.service
