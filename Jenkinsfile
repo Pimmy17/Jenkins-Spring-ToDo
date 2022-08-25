@@ -18,7 +18,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
-                java -jar /home/jenkins/project-wars/project-${BUILD_NUMBER}.war
+                nohup java -jar /home/jenkins/project-wars/project-${BUILD_NUMBER}.war &
                 '''
             }
         }
