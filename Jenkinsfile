@@ -29,7 +29,7 @@ Description=My SpringBoot App
 User=ubuntu
 Type=simple
 
-ExecStart=/usr/bin/java -jar /home/jenkins/project-wars/project_build_' + $buildNum + '.war
+ExecStart=/usr/bin/java -jar /home/jenkins/project-wars/project_build_'$buildNum'.war
 
 [Install]
 WantedBy=multi-user.target' > /home/jenkins/myApp.service
