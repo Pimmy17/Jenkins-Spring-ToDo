@@ -11,7 +11,7 @@ pipeline {
             steps {
                 echo "Running Build Command"
                 sh '''
-                ssh -i ./ssh/id_rsa jenkins@18.132.114.79 <<- _EOF_
+                ssh -i ./.ssh/id_rsa jenkins@18.132.114.79 << EOF
                 git clone https://github.com/Pimmy17/Jenkins-Spring-ToDo.git
                 cd Jenkins-Spring-ToDo
                 git checkout main
@@ -19,7 +19,7 @@ pipeline {
                 mvn clean install
                 mkdir -p /home/jenkins/project-wars
                 mv ./target/*.war /home/jenkins/project-wars/project-${BUILD_NUMBER}.war
-                _EOF_
+                EOF
                 '''
             }
         }
@@ -27,7 +27,7 @@ pipeline {
             steps {
                 echo "Running Deployment"
                 sh '''
-                ssh -i ./ssh/id_rsa jenkins@18.132.114.79 << EOF
+                ssh -i ./.ssh/id_rsa jenkins@18.132.114.79 << EOF
                 buildNum=${BUILD_NUMBER}
                 echo '[Unit]
 Description=My SpringBoot App
